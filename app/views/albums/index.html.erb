@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Albums</h1>
+<h3 class='d-flex justify-content-between'>
+<span>Albums</span>
+  <%= link_to 'New Album', new_album_path, class: 'btn btn-primary'%>
+</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Title</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +17,6 @@
     <% @albums.each do |album| %>
       <tr>
         <td><%= album.title %></td>
-        <td><%= album.user_id %></td>
         <td><%= link_to 'Show', album %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+
