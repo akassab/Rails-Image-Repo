@@ -1,6 +1,7 @@
-<h1>Editing Album</h1>
+<h3>Editing Album
+<%= link_to 'View', @album, class: 'btn btn-outline-primary' %>
+</h1>
 
 <%= render 'form', album: @album %>
 
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+

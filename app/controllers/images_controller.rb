@@ -1,11 +1,12 @@
 class ImagesController < ApplicationController
+  before_action :set_album
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   # GET /images
   # GET /images.json
-  def index
-    @images = Image.all
-  end
+  #def index
+  #  @images = @album.images
+  #end
 
   # GET /images/1
   # GET /images/1.json
@@ -24,7 +25,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
+    @image = @album.images.build(image_params)
 
     respond_to do |format|
       if @image.save
@@ -63,12 +64,15 @@ class ImagesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_album
+      @album = current_user.albums.find(params[:album_id])
+    end
     def set_image
-      @image = Image.find(params[:id])
+      @image = @album.images.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:title, :user_id)
+      params.require(:image).permit(:title, :position, :album_id)
     end
 end

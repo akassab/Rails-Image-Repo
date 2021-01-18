@@ -2,8 +2,10 @@
 
 one:
   title: MyString
-  user: one
+  position: MyString
+  album: one
 
 two:
   title: MyString
-  user: two
+  position: MyString
+  album: two
